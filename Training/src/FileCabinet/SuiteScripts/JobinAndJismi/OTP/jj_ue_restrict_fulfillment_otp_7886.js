@@ -14,6 +14,8 @@
  * 
  * Description : This script is for displaying warning message for item fulfillment if custom checkbox is checked.
  * 
+ * REVISION HISTORY : 1.0
+ * 
  * 
  * 
  * 
@@ -26,20 +28,8 @@ define(['N/record', 'N/search', 'N/ui/message','N/log', 'N/error'],
  * @param{search} search
  * @param{message} message
  */
-    (record, search, message, log, error) => {
-        /**
-         * Defines the function definition that is executed before record is loaded.
-         * @param {Object} scriptContext
-         * @param {Record} scriptContext.newRecord - New record
-         * @param {string} scriptContext.type - Trigger type; use values from the context.UserEventType enum
-         * @param {Form} scriptContext.form - Current form
-         * @param {ServletRequest} scriptContext.request - HTTP request information sent from the browser for a client action only.
-         * @since 2015.2
-         */
-        const beforeLoad = (scriptContext) => {
-
-        }
-
+    (record, search, message, log) => {
+        
         /**
          * Defines the function definition that is executed before record is submitted.
          * @param {Object} scriptContext
@@ -74,21 +64,10 @@ define(['N/record', 'N/search', 'N/ui/message','N/log', 'N/error'],
                 }
             
         }
-            
 
         }
 
-        /**
-         * Defines the function definition that is executed after record is submitted.
-         * @param {Object} scriptContext
-         * @param {Record} scriptContext.newRecord - New record
-         * @param {Record} scriptContext.oldRecord - Old record
-         * @param {string} scriptContext.type - Trigger type; use values from the context.UserEventType enum
-         * @since 2015.2
-         */
-        const afterSubmit = (scriptContext) => {
-        }
 
-        return {beforeLoad, beforeSubmit, afterSubmit}
+        return {beforeSubmit}
 
     });
