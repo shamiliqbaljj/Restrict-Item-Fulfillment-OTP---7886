@@ -14,21 +14,19 @@
  * 
  * Description : This script is for displaying warning message for item fulfillment if custom checkbox is checked.
  * 
- * REVISION HISTORY : 1.0
- * 
  * 
  * 
  * 
  * @NApiVersion 2.1
  * @NScriptType UserEventScript
  */
-define(['N/record', 'N/search', 'N/ui/message','N/log', 'N/error'],
+define(['N/record', 'N/ui/message','N/log'],
     /**
  * @param{record} record
  * @param{search} search
  * @param{message} message
  */
-    (record, search, message, log) => {
+    (record, message, log) => {
         
         /**
          * Defines the function definition that is executed before record is submitted.
@@ -39,9 +37,7 @@ define(['N/record', 'N/search', 'N/ui/message','N/log', 'N/error'],
          * @since 2015.2
          */
         const beforeSubmit = (scriptContext) => {
-
         var newRecord = scriptContext.newRecord;
-
         
         if (newRecord.type === record.Type.ITEM_FULFILLMENT) {
             var salesOrderId = newRecord.getValue({
@@ -52,22 +48,16 @@ define(['N/record', 'N/search', 'N/ui/message','N/log', 'N/error'],
                     type: record.Type.SALES_ORDER,
                     id: salesOrderId
                 });
-
                 var customFieldChecked = salesOrder.getValue('custbody_jj_hold_fulfillment_otp_7886'); 
-
                 log.debug(customFieldChecked);
                 
-
                 if (customFieldChecked) {
-
                     throw new Error('Bulk item fulfillment is restricted.');
                 }
             
         }
-
+            
         }
-
-
+       
         return {beforeSubmit}
-
     });

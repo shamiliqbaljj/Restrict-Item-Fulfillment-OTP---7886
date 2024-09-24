@@ -20,9 +20,9 @@
  * @NScriptType ClientScript
  * @NModuleScope SameAccount
  */
-define(['N/record','N/ui/message'],
+define(['N/ui/message','N/log'],
 
-function(message) {
+function(message, log) {
     
     /**
      * Validation function to be executed when record is saved.
@@ -35,6 +35,8 @@ function(message) {
      */
     function saveRecord(scriptContext) {
 
+        try
+        {
         let currentRecord = scriptContext.currentRecord;
         let holdFulfillment = currentRecord.getValue('custbody_jj_hold_fulfillment_otp_7886');// Fetch value of custom checkbox
         if (holdFulfillment)
@@ -43,11 +45,17 @@ function(message) {
         }
         return true;
     }
+    catch(error)
+    {
+        log.error(error);
+    }
+    }
 
     // Function To Display Warning Message
 
     function warningMessage()
     {
+        try{
         let myMsg3 = message.create({
             title: 'Fulfillment Not Allowed',
             message: 'Fulfilmment is restricted for this Sales Order',
@@ -55,6 +63,11 @@ function(message) {
             duration: 100000
         });
         myMsg3.show();
+    }
+    catch(error)
+    {
+        log.error(error);
+    }
     }
 
     return {
