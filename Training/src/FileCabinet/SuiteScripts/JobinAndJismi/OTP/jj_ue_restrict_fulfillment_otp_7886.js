@@ -38,6 +38,9 @@ define(['N/record', 'N/ui/message','N/log'],
          * @since 2015.2
          */
         const beforeSubmit = (scriptContext) => {
+
+        try
+        {
         var newRecord = scriptContext.newRecord;
         
         if (newRecord.type === record.Type.ITEM_FULFILLMENT) {
@@ -57,8 +60,14 @@ define(['N/record', 'N/ui/message','N/log'],
                 }
             
         }
+    }
+    catch(error)
+        {
+            log.error(error);
+        }
             
         }
+        
        
         return {beforeSubmit}
     });
