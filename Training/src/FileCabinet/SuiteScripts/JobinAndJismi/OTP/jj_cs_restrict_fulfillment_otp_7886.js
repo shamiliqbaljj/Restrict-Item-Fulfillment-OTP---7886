@@ -1,6 +1,8 @@
 /**
  * 
  * 
+ * client - Nill
+ * 
  * OTP 7886 - Restrict Item Fulfillment
  * 
  * 
@@ -33,6 +35,8 @@ function(message, log) {
      *
      * @since 2015.2
      */
+
+    
     function saveRecord(scriptContext) {
 
         try
@@ -51,7 +55,18 @@ function(message, log) {
     }
     }
 
-    // Function To Display Warning Message
+
+
+    
+    /**
+ * Displays a warning message indicating that fulfillment is restricted for the current Sales Order.
+ *
+ * This function creates a message with a specified title, content, type, and duration,
+ * and then shows it to the user.
+ *
+ * @returns {void} This function does not return a value.
+ * @throws {Error} Throws an error if there is an issue while creating or displaying the message.
+ */
 
     function warningMessage()
     {
