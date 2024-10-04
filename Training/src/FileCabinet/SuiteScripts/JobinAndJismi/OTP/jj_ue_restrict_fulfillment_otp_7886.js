@@ -21,13 +21,13 @@
  * @NApiVersion 2.1
  * @NScriptType UserEventScript
  */
-define(['N/record', 'N/ui/message','N/log'],
+define(['N/record','N/log'],
     /**
  * @param{record} record
  * @param{search} search
  * @param{message} message
  */
-    (record, message, log) => {
+    (record, log) => {
         
         /**
          * Defines the function definition that is executed before record is submitted.
